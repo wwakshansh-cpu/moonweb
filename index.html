@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Just For You ♡</title>
+
+
+
+<style>
+*{
+    box-sizing:border-box;
+}
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background-image:url("Screenshot__313_.png");
+    background-repeat:repeat;
+    background-size:140px;
+    opacity:0.16;
+    pointer-events:none;
+    z-index:0;
+}
+body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:30px 15px; letter-spacing:0.2px;
+   
+        background:
+    radial-gradient(circle at 20% 20%, #fffaf5, transparent 30%),
+    radial-gradient(circle at 80% 30%, #ead1ca, transparent 25%),
+    radial-gradient(circle at 20% 85%, #e8d0c2, transparent 30%),
+    #f3e5d8;
+    font-family:Georgia,serif;
+    color:#5b4035;
+    overflow:auto; background-attachment:fixed;
+}
+
+.card{
+    position:relative;
+    width:90%;
+    max-width:700px;
+    min-height:500px;
+    padding:60px 42px;
+    text-align:center;
+    background:
+       
+    repeating-linear-gradient(
+        0deg,
+        #fffaf4 0px,
+        #fffaf4 3px,
+        #fdf5ed 4px,
+        #fffaf4 7px
+    );
+   border:1px solid #d8b8aa; border-radius:28px; background-size:100% 8px;
+    box-shadow:
+        0 20px 55px rgba(90,55,40,0.16),
+        0 4px 12px rgba(90,55,40,0.08);
+}
+
+.card::before{
+   
+    content:"🎀  ♡  ✿  ♡  🎀";
+    position:absolute;
+    top:18px;
+    left:0;
+    right:0;
+    font-size:18px;
+    letter-spacing:12px;
+    color:#b98778;
+}
+}
+
+.card::after{
+    content:"♡";    position:absolute;
+    bottom:18px;
+    right:25px;
+    font-size:25px;
+    color:#c49687;
+}
+
+.decor{
+    font-size:22px;
+    margin-bottom:18px;
+    letter-spacing:3px;
+    opacity:0.9;
+}
+.corner-decor{
+    position:absolute;
+    font-size:24px;
+    opacity:0.6;
+}
+.tape{
+    position:absolute;
+    width:90px;
+    height:24px;
+    background:rgba(221,190,176,0.55);
+    transform:rotate(-7deg);
+    opacity:0.8;
+}
+.corner-left{
+    left:18px;
+    bottom:20px;
+}
+
+.corner-right{
+    right:18px;
+    top:55px;
+}  
+
+h1{
+    font-size:45px;
+    margin:10px 0 20px;
+    color:#6b4639;
+    font-weight:normal;
+    letter-spacing:2px;text-shadow:2px 2px 0px #ead4c8;
+}
+
+h2{
+    font-size:31px;
+    color:#704b3e;
+    font-weight:normal;
+}
+
+p{
+    font-size:19px;
+    line-height:1.9;
+    color:#654b41;
+}
+
+button{
+    border:1px solid #d2aaa0;
+    padding:14px 30px;
+    margin:10px;
+    border-radius:18px;
+    font-family:Georgia,serif;
+    font-size:16px;
+    cursor:pointer;
+    background:#a97868;    color:white;
+    box-shadow:
+    0 5px 10px rgba(90,55,40,0.12),
+    2px 2px 0px rgba(185,135,120,0.18); filter:sepia(3%);
+    transition:0.25s;
+}
+
+button:hover{
+    transform:translateY(-3px) scale(1.03);
+    box-shadow:0 9px 20px rgba(90,55,40,0.2);
+}
+
+.photo{
+    width:85%;
+    max-width:450px;
+    border-radius:20px;
+    margin:15px;
+    box-shadow:0 10px 25px rgba(70,45,35,0.15);
+}
+
+.photo-grid{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    align-items:center;
+    gap:24px; padding:10px 4px;
+}
+
+.photo-grid img{
+    width:42%;
+    max-width:250px;
+    border-radius:4px;
+    padding:8px 8px 28px 8px;
+    background:#fffaf4;
+    box-shadow:
+    0 10px 18px rgba(70,45,35,0.16),
+    2px 4px 0px rgba(185,135,120,0.12);    transform:rotate(-2deg); transition:transform 0.3s ease;
+} .photo-grid img:nth-child(even){
+    transform:rotate(2deg);
+} .photo-grid img:hover{
+    transform:rotate(0deg) scale(1.04);
+} @media(max-width:600px){
+    .card{
+        width:96%;
+        padding:55px 22px;
+    }
+
+    h1{
+        font-size:36px;
+    }
+
+    h2{
+        font-size:26px;
+    }
+
+    p{
+        font-size:17px;
+    }
+
+    .photo-grid img{
+        width:45%;
+    }
+} #passwordScreen{
+   
+    position:fixed;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    z-index:9999;
+    font-family:Georgia,serif;
+    color:#5b4035;
+
+    background:
+        radial-gradient(circle at 15% 20%, #fffaf5, transparent 28%),
+        radial-gradient(circle at 85% 25%, #ead1ca, transparent 25%),
+        radial-gradient(circle at 20% 85%, #e8d0c2, transparent 30%),
+        #f3e5d8;
+
+    background-image:
+        url("Screenshot__313_.png"),
+        radial-gradient(circle at 15% 20%, #fffaf5, transparent 28%),
+        radial-gradient(circle at 85% 25%, #ead1ca, transparent 25%),
+        radial-gradient(circle at 20% 85%, #e8d0c2, transparent 30%);
+
+    background-repeat:repeat;
+    background-size:140px, auto, auto, auto;
+    background-blend-mode:multiply;
+}
+#passwordScreen h1{
+    color:#6b4639;
+    font-size:38px;
+    font-weight:normal;
+}
+
+#passwordScreen p{
+    color:#654b41;
+    font-size:17px;
+}
+
+#passwordInput{
+    padding:14px 18px;
+    width:230px;
+    border:1px solid #d2aaa0;
+    border-radius:16px;
+    outline:none;
+    text-align:center;
+    font-family:Georgia,serif;
+    font-size:16px;
+    background:#fffaf4;
+}
+
+#passwordScreen button{
+    margin-top:15px;
+}
+
+#wrongPassword{
+    color:#a45d5d !important;
+    font-size:14px !important;
+}
+
+#passwordScreen{
+    display:flex;
+}
+</style></head>
+
+<body>
+<div id="passwordScreen">
+    <h1>🔐 Secret Corner</h1>
+    <p>Enter the password to open ♡</p>
+
+    <input type="password" id="passwordInput" placeholder="Password">
+    <button onclick="checkPassword()">OPEN ♡</button>
+
+    <p id="wrongPassword"></p>
+</div>
+<div class="card"> <div class="tape" style="top:35px; left:25px;"></div> <div class="tape" style="top:35px; right:25px; transform:rotate(7deg);"></div>
+<div class="decor">🎀　♡　✿　♡　🎀</div> <div class="corner-decor corner-left">✿</div>
+<div class="corner-decor corner-right">♡</div> <div style="font-size:13px; letter-spacing:7px; color:#c49687; margin-bottom:12px;">✦　·　✦</div>
+    <div style="font-size:35px;">♡</div>
+
+    <h1>Hey You...</h1>
+
+    <p>I made something a little special for you.</p>
+
+    <p>Do you want to open it? 💌</p>
+
+    <button onclick="yes()">YES ♡</button>
+    <button onclick="no()">NO 🙈</button>
+
+</div>
+
+
+<script>
+
+function yes(){
+
+    document.body.innerHTML = `
+        <div class="card">
+
+            <div style="font-size:40px;">🤎</div>
+
+            <h1>A Little Introduction...</h1>
+
+            <p>
+                Okay… so I made this little corner for you. ♡
+            </p>
+
+            <p>
+                It's nothing too complicated,
+                just a few pages filled with little thoughts,
+                memories and things I wanted to say.
+            </p>
+
+            <p>
+                So take your time and go through it. ✨
+            </p>
+
+            <button onclick="pageThree()">Continue ♡</button>
+
+        </div>
+    `;
+}
+
+
+function no(){
+
+    document.body.innerHTML = `
+        <div class="card">
+
+            <div style="font-size:55px;">🥺</div>
+
+            <h1>Oh...</h1>
+
+            <p>
+                You really clicked NO? 😭
+            </p>
+
+            <p>
+                Okay okay… I'll give you another chance. 🤎
+            </p>
+
+            <button onclick="location.reload()">Go Back ♡</button>
+
+        </div>
+    `;
+}
+
+
+function pageThree(){
+
+    document.body.innerHTML = `
+        <div class="card">
+
+            <div style="font-size:40px;">💌</div>
+
+            <h1>For You</h1>
+
+            <p>
+                I don't always know how to put everything
+                into words, but I wanted to make this little
+                space just for you.
+            </p>
+
+            <p>
+                There are so many small things that can make
+                a person special — the conversations,
+                the laughs, the silly moments and simply
+                having someone who becomes an important
+                part of your days. 🤎
+            </p>
+
+            <p>
+                So this website is my tiny way of collecting
+                some of those feelings in one place. ✨
+            </p>
+
+            <button onclick="pageFour()">Continue ♡</button>
+
+        </div>
+    `;
+}
+
+
+function pageFour(){
+
+    document.body.innerHTML = `
+        <div class="card">
+
+            <div style="font-size:45px;">🤎</div>
+
+            <h1>Happy Boyfriend's Day</h1>
+
+            <p>
+                Happy Boyfriend's Day to someone
+                who has become such a special part
+                of my little world. ♡
+            </p>
+
+            <p>
+                I hope today reminds you how appreciated,
+                remembered and special you are.
+            </p>
+
+            <div style="font-size:40px; margin:25px;">
+                🧸 ♡ ✨ ♡ 🧸
+            </div>
+
+            <button onclick="pageFive()">Next Page ♡</button>
+
+        </div>
+    `;
+}
+
+
+function pageFive(){
+
+    document.body.innerHTML = `
+        <div class="card">
+
+            <div style="font-size:45px;">🌷</div>
+
+            <h1>Why You're Special</h1>
+
+            <p>
+                Maybe it's not just one particular thing.
+                Maybe it's all the tiny things together.
+            </p>
+
+            <p>
+                The way ordinary moments can become memories,
+                the random conversations that somehow become
+                things worth remembering, and all those little
+                reasons that make someone feel important. 🤎
+            </p>
+
+            <p>
+                That's what makes you special to me. ♡
+            </p>
+
+            <button onclick="pageSix()">Continue ♡</button>
+
+        </div>
+    `;
+}
+
+
+function pageSix(){
+
+    document.body.innerHTML = `
+        <div class="card">
+
+            <div style="font-size:45px;">✨</div>
+
+            <h1>Our Little Moments</h1>
+
+            <p>
+                Sometimes the smallest moments end up
+                becoming our favourite memories.
+            </p>
+
+            <p>
+                A random conversation.
+                A silly joke.
+                A simple picture.
+                A moment that didn't seem important
+                at the time, but somehow stayed in memory. 🤎
+            </p>
+
+            <p>
+                Maybe that's what makes little moments beautiful.
+                You don't know how special they are
+                until you look back at them. ♡
+            </p>
+
+            <button onclick="pageSeven()">Memories 📸</button>
+
+        </div>
+    `;
+}
+
+
+function pageSeven(){
+
+    document.body.innerHTML = `
+        <div class="card">
+
+            <div style="font-size:40px;">📸</div>
+
+            <h1>Memories</h1>
+
+            <p>
+                A few little moments worth keeping close. 🤎
+            </p>
+
+            <div class="photo-grid">
+
+                <img src="Screenshot__303_.png">
+
+                <img src="Screenshot__302_.png">
+
+                <img src="Screenshot__305_.png">
+
+                <img src="Screenshot__306_.png">
+
+            </div>
+
+            <p>
+                Every picture has its own little story. ♡
+            </p>
+
+            <button onclick="pageEight()">Next Page ♡</button>
+
+        </div>
+    `;
+}
+
+
+function pageEight(){
+
+    document.body.innerHTML = `
+        <div class="card">
+
+           <img src="dudu.png"
+style="width:140px; margin-bottom:10px; filter:drop-shadow(3px 4px 4px rgba(90,55,40,0.18));">            <h1>A Little World of Us</h1>
+<div style="font-size:15px; letter-spacing:3px; color:#b98778; margin-bottom:18px;">♡ LITTLE MEMORIES ♡</div>
+            <p>
+                Just a few more little memories
+                before the final pages. 🧸🤎
+            </p>
+
+            <div class="photo-grid">
+
+                <img src="Screenshot__306_.png">
+
+                <img src="Screenshot__308_.png">
+
+                <img src="Screenshot__304_.png">
+
+                <img src="Screenshot__307_.png">
+
+            </div>
+
+            <div style="font-size:35px; margin:25px;">
+                🧸 ♡ 🎀 ♡ 🧸
+            </div>
+<div style="font-size:14px; letter-spacing:3px; color:#b98778; margin-bottom:10px;">
+    ✦ OUR LITTLE CORNER ✦
+</div>
+            <button onclick="pageNine()">Continue ♡</button>
+
+        </div>
+    `;
+}
+
+
+function pageNine(){
+
+    document.body.innerHTML = `
+        <div class="card">
+
+           <img src="dudu.png"
+style="width:140px; margin-bottom:10px; filter:drop-shadow(3px 4px 4px rgba(90,55,40,0.18));">
+
+            <h1>If I Could Keep One Moment…</h1>
+<div style="font-size:15px; letter-spacing:3px; color:#b98778; margin-bottom:18px;">♡ ONE LITTLE MOMENT ♡</div>
+            <img src="Screenshot__312_.png"
+            class="photo">
+
+            <p>
+                If I could keep one little moment forever,
+                I think it would be one of those simple moments
+                where everything just felt happy and easy. ♡
+            </p>
+
+            <p>
+                Not because it was perfect,
+                but because it felt like one of those moments
+                I would want to remember for a really long time.
+            </p>
+
+            <div style="font-size:35px; margin:25px;">
+                🧸 ♡ ✨ ♡ 🧸
+            </div>
+
+            <p>
+                Maybe that's what makes little memories so beautiful.
+                We don't always realise how special they are
+                until we look back at them. 🤎
+            </p>
+
+            <button onclick="pageTen()">Continue ♡</button>
+
+        </div>
+    `;
+}
+
+
+function pageTen(){
+
+    document.body.innerHTML = `
+        <div class="card">
+
+            <div style="font-size:45px;">🌹</div>
+
+            <h1>One Last Thing</h1>
+
+            <p>
+                Before this little journey ends,
+                I just wanted to say one more thing. ♡
+            </p>
+
+            <p>
+                Thank you for being part of so many little moments
+                that made my days brighter and my memories sweeter.
+                🤎
+            </p>
+
+            <p>
+                I hope whenever you look back at this little website,
+                it reminds you of all the smiles behind it. ✨
+            </p>
+
+            <button onclick="pageEleven()">Continue ♡</button>
+
+        </div>
+    `;
+}
+
+
+function pageEleven(){
+
+    document.body.innerHTML = `
+        <div class="card">
+
+            <div style="font-size:50px;">🎁</div>
+
+            <h1>Final Surprise</h1>
+
+            <p>
+                Okay… one last little surprise. ♡
+            </p>
+
+            <p>
+                I hope this tiny website made you smile,
+                even just a little.
+                Because making it was my little way
+                of putting some love into a few simple pages. 🤎
+            </p>
+
+            <p>
+                And if you ever come back here,
+                I hope you'll remember this little
+                website and all the smiles behind it. ✨
+            </p>
+
+            <div style="font-size:35px; margin:25px;">
+                ♡ 🧸 ♡ 🎀 ♡
+            </div>
+
+            <button onclick="pageTwelve()">One More ♡</button>
+
+        </div>
+    `;
+}
+
+
+function pageTwelve(){
+
+    document.body.innerHTML = `
+        <div class="card">
+
+            <div style="font-size:50px;">♡</div>
+
+            <h1>For You, Always</h1>
+
+            <p>
+                Some people become special without even trying.
+                They simply become a beautiful part of your days. 🤎
+            </p>
+
+            <p>
+                The little smiles, silly moments,
+                conversations, and everything in between
+                are what make memories worth keeping. ✨
+            </p>
+
+            <div style="font-size:38px; margin:25px;">
+                🧸 ♡ 🎀 ♡ 🧸
+            </div>
+
+            <p>
+                You are very, very special to me. ♡
+            </p>
+
+            <button onclick="pageThirteen()">The End ♡</button>
+
+        </div>
+    `;
+}
+
+
+function pageThirteen(){
+
+    document.body.innerHTML = `
+        <div class="card">
+
+            <div style="font-size:55px;">🤎</div>
+
+            <h1>The End ♡</h1>
+
+            <p>
+                And that's where this little journey ends…
+                but hopefully, the memories don't. ✨
+            </p>
+
+            <p>
+                Thank you for opening this little corner
+                I made just for you.
+            </p>
+
+            <p>
+                Keep smiling, keep being you,
+                and keep all the little happy moments close. 🤎
+            </p>
+
+            <div style="font-size:40px; margin:30px 0;">
+                🧸 ♡ 🎀 ♡ 🧸
+            </div>
+
+            <h2>
+                Happy Boyfriend's Day ♡
+            </h2>
+
+            <p style="font-size:16px;">
+                Made with lots of love & a little bit of craziness 🤎
+            </p>
+
+        </div>
+    `;
+}
+function checkPassword(){
+
+    const password = document.getElementById("passwordInput").value;
+
+    if(password === "babyboy"){
+        document.getElementById("passwordScreen").style.display = "none";
+        document.querySelector(".card").style.display = "block";
+    }
+    else {
+        document.getElementById("wrongPassword").innerText =
+        "Wrong password... try again ♡";
+    }
+}
+</script>
+
+</body>
+</html>
+
